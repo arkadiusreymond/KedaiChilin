@@ -1,5 +1,5 @@
 var db = null;
-angular.module('starter.controllers', ['ngCordova'])
+angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
@@ -21,37 +21,180 @@ angular.module('starter.controllers', ['ngCordova'])
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
 })
-tes.controller('AccountCtrl', function($scope, $cordovaSQLite) {
-db = $cordovaSQLite.openDB({ name: "my.db" });
-$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS people (id integer primary key, firstname text, lastname text)");
- $scope.insert = function(firstname, lastname) {
-        var query = "INSERT INTO people (firstname, lastname) VALUES (?,?)";
-        $cordovaSQLite.execute(db, query, [firstname, lastname]).then(function(res) {
-            var message = "INSERT ID -> " + res.insertId;
-            console.log(message);
-            alert(message);
-        }, function (err) {
-            console.error(err);
-            alert(err);
+
+
+
+tes.controller('AccountCtrl', function($ionicLoading, $scope, $cordovaSQLite, $ionicModal, $timeout, $ionicPopup) {
+		
+		$scope.post = {};
+        $scope.put = {};
+        $ionicLoading.show({
+            template: 'Loading...'
         });
-    }
- 
-    $scope.select = function(lastname) {
-        var query = "SELECT firstname, lastname FROM people WHERE lastname = ?";
-        $cordovaSQLite.execute(db, query, [lastname]).then(function(res) {
-            if(res.rows.length > 0) {
-                var message = "SELECTED -> " + res.rows.item(0).firstname + " " + res.rows.item(0).lastname;
-                alert(message);
-                console.log(message);
-            } else {
-                alert("No results found");
-                console.log("No results found");
-            }
-        }, function (err) {
-            alert(err);
-            console.error(err);
+        $timeout(function () {
+            $ionicLoading.hide();
+            getList();
+        }, 3000);
+		
+		
+			
+        $scope.edit = function () {
+            var query = "update menu_makanan set nama = ?,harga=?,jenis=? where id=?";
+            $cordovaSQLite.execute(db, query, [
+                $scope.put.nama,
+                $scope.put.harga,
+				$scope.put.jenis,
+                $scope.put.id
+            ]).then(function () {
+                $ionicPopup.alert({
+                    title: "Information",
+                    template: "Update data success",
+                    okText: 'Ok',
+                    okType: 'button-positive'
+                });
+                getList();
+            }, function (err) {
+                console.log(err.message);
+            });
+        };
+        
+        function getList() {
+            $cordovaSQLite.execute(db, 'SELECT * FROM menu_makanan WHERE jenis="Makanan" ORDER BY nama ASC').then(function (res) {
+                $scope.datas = [];
+                for (var i = 0; i < res.rows.length; i++) {
+                    $scope.datas.push(res.rows.item(i));
+                }
+            }, function (err) {
+                console.log(err.message);
+            });
+        };
+		
+		$scope.tampilmakanan = function () {
+            $cordovaSQLite.execute(db, 'SELECT * FROM menu_makanan WHERE jenis="Makanan" ORDER BY nama ASC').then(function (res) {
+                $scope.datas = [];
+                for (var i = 0; i < res.rows.length; i++) {
+                    $scope.datas.push(res.rows.item(i));
+                }
+            }, function (err) {
+                console.log(err.message);
+            });
+        };
+		
+		$scope.tampilminuman = function () {
+            $cordovaSQLite.execute(db, 'SELECT * FROM menu_makanan WHERE jenis="Minuman" ORDER BY nama ASC').then(function (res) {
+                $scope.datas = [];
+                for (var i = 0; i < res.rows.length; i++) {
+                    $scope.datas.push(res.rows.item(i));
+                }
+            }, function (err) {
+                console.log(err.message);
+            });
+        };
+		
+		$scope.tampiltoping = function () {
+            $cordovaSQLite.execute(db, 'SELECT * FROM menu_makanan WHERE jenis="Toping" ORDER BY nama ASC').then(function (res) {
+                $scope.datas = [];
+                for (var i = 0; i < res.rows.length; i++) {
+                    $scope.datas.push(res.rows.item(i));
+                }
+            }, function (err) {
+                console.log(err.message);
+            });
+        };
+		
+        $ionicModal.fromTemplateUrl('templates/add.html', {
+            scope: $scope
+        }).then(function (modal) {
+            $scope.modalAdd = modal;
         });
-    }
+        $ionicModal.fromTemplateUrl('templates/edit.html', {
+            scope: $scope
+        }).then(function (modal) {
+            $scope.modalEdit = modal;
+        });
+		$ionicModal.fromTemplateUrl('templates/menu.html', {
+            scope: $scope
+        }).then(function (modal) {
+            $scope.modalMenu = modal;
+        });
+        $scope.closeEdit = function () {
+            $scope.modalEdit.hide();
+        };
+        $scope.closeAdd = function () {
+            $scope.modalAdd.hide();
+        };
+        $scope.goAdd = function () {
+            $scope.modalAdd.show();
+        };
+		$scope.goMenu = function () {
+            $scope.modalMenu.show();
+        };
+		 $scope.closeMenu = function () {
+            $scope.modalMenu.hide();
+        };
+      
+        $scope.refreshItems = function () {
+            $timeout(function () {
+                getList();
+                $scope.$broadcast('scroll.refreshComplete');
+            }, 1000);
+        };
+        $scope.click = function (data) {
+            $ionicPopup.show({
+                title: 'Confirm',
+                template: "what is your choice ?",
+                buttons: [
+                    {
+                        text: 'Delete',
+                        type: 'button-assertive',
+                        onTap: function () {
+                            var query = "delete from menu_makanan where id = ?";
+                            $cordovaSQLite.execute(db, query, [data.id]).then(function () {
+                                $ionicPopup.alert({
+                                    title: "Information",
+                                    template: "Delete data success",
+                                    okText: 'Ok',
+                                    okType: 'button-positive'
+                                });
+                                getList();
+                            }, function (err) {
+                                console.log(err.message);
+                            });
+                        }
+                    },
+                    {
+                        text: 'Edit',
+                        type: 'button-positive',
+                        onTap: function () {
+                            $scope.put = data;
+                            $scope.modalEdit.show();
+                        }
+                    }
+                ]
+            });
+        };	
+
+			$scope.add = function () {
+            var data = [];
+            angular.forEach($scope.post, function (element) {
+                data.push(element);
+            });
+            var query = "INSERT INTO menu_makanan(nama,harga,jenis) VALUES (?,?,?)";
+            $cordovaSQLite.execute(db, query, data).then(function () {
+                $ionicPopup.alert({
+                    title: "Information",
+                    template: "Saving data success",
+                    okText: 'Ok',
+                    okType: 'button-positive'
+                });
+                $scope.post = {};
+                getList();
+            }, function (err) {
+                console.log(err.message);
+            });
+        };		
+		
 });
+
 
 
