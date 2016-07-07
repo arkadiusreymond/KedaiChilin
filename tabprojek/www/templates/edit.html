@@ -1,30 +1,30 @@
 <ion-modal-view>
     <div class="bar bar-header bar-balanced">
-        <h1 class="title">Edit Menu Makanan</h1>
+        <h1 class="title fontnormal2">Edit Menu</h1>
         <button ng-click="closeEdit()" class="button button-clear"><i class="icon ion-ios-close-outline"></i>
         </button>
     </div>
     <ion-content padding="false" class="has-header" overflow-scroll="false">
-        <form class="list" name="form" >
+        <form class="list fontnormal2" name="form" >
             <label class="item item-input item-stacked-label">
-                <span class="input-label">Nama Makanan</span>
+                <span class="input-label">Nama Menu</span>
                 <input type="hidden" ng-model="put.id">
-                <input ng-model="put.nama" type="text" placeholder="Input nama makanan" required>
+                <input ng-model="put.nama" type="text" placeholder="Input nama menu" required>
             </label>
             <label class="item item-input item-stacked-label">
-                <span class="input-label">Harga Makanan</span>
-                <input ng-model="put.harga" type="text" placeholder="Input harga makanan type="number" min="0" step="any"" required>
+                <span class="input-label">Harga Menu</span>
+                <input ng-model="put.harga" type="text" placeholder="Input harga menu" type="number" min="0" step="any" required>
             </label>
 			<label class="item item-input item-select">
 				<div class="input-label">Jenis Menu </div>
 				<select ng-model="put.jenis" required>
 					<option selected>Makanan</option>
 					<option>Minuman</option>
-					<option>Toping</option>
+					<option>Topping</option>
 				</select>
 			</label>
             <div class="padding-left padding-right">
-                <button ng-click="edit()" class="button button-positive button-outline button-block" ng-disabled="form.$invalid"><i class="icon ion-ios-checkmark-outline" >  EDIT MENU MAKANAN</i></button>
+                <button ng-click="edit()"class="button button-balanced2 button-block fontnormal2" ng-disabled="form.$invalid"><i class="icon ion-ios-checkmark-outline" >  <strong>EDIT MENU</strong></i></button>
             </div>
         </form>
     </ion-content>

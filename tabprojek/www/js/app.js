@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 var db = null;
-var tes = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
+var tes = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'jett.ionic.filter.bar'])
 
 .run(function($ionicPlatform, $cordovaSQLite) {
   $ionicPlatform.ready(function() {
@@ -21,9 +21,11 @@ var tes = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-db = $cordovaSQLite.openDB({ name: "gagaga.db" });
-$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS menu_makanan (id integer primary key AUTOINCREMENT, nama TEXT,harga FLOAT, jenis TEXT)");	
-	
+db = $cordovaSQLite.openDB({ name: "kedaisdhcaeaehisdfhhahcsflddhin1w32.db" });
+$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS menu_makanan (id integer primary key AUTOINCREMENT, counter tinyint,nama TEXT, harga INTEGER, jenis TEXT)");	
+$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS orderan (id integer primary key AUTOINCREMENT, nama TEXT,harga INTEGER, jumlah INTEGER, total_harga INTEGER)");	
+$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS penjualan (id integer primary key AUTOINCREMENT, nama TEXT,harga INTEGER, jumlah INTEGER, total_harga INTEGER)");
+$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS invoice (id integer primary key AUTOINCREMENT, invoice_number TEXT,pendapatan INTEGER)");	
   });
 })
 
@@ -42,6 +44,7 @@ tes.config(function($stateProvider, $urlRouterProvider) {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
+	
   })
 
   // Each tab has its own nav history stack:
@@ -52,7 +55,8 @@ tes.config(function($stateProvider, $urlRouterProvider) {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
         controller: 'DashCtrl'
-      }
+      },
+	 
     }
   })
 

@@ -1,33 +1,40 @@
 <ion-modal-view>
     <div class="bar bar-header bar-balanced">
-        <h1 class="title">Tambah Menu</h1>
-        <button ng-click="closeAdd()" class="button button-clear"><i class="icon ion-arrow-down-a"></i>
+        <h1 class="title fontnormal2">Tambah Menu</h1>
+        <button ng-click="closeAdd()" class="button button-clear"><i class="icon ion-ios-close-outline"></i>
         </button>
     </div>
     <ion-content padding="false" class="has-header" overflow-scroll="false">
-        <form class="list" name="form" >
+        <form class="list fontnormal2" name="form" >
             <label class="item item-input item-stacked-label">
-                <span class="input-label">Nama Menu</span>
-                <input ng-model="post.nama" type="text" placeholder="Input nama makanan" required>
+                <span class="input-label ">Nama Menu</span>
+                <input ng-model="post.nama" type="text" placeholder="Input nama menu" required>
+				
             </label>
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Harga Menu</span>
-                <input ng-model="post.harga" type="number" min="0" step="any" placeholder="Input harga makanan" required>
+                <input ng-model="post.harga" type="number" min="0" step="any" placeholder="Input harga menu" required>
             </label>
-			<!--<label class="item item-input item-stacked-label">
-                <span class="input-label">Jenis Makanan</span>
-                <input ng-model="post.jenis" type="text" placeholder="Input nama makanan" required>
-            </label>-->
 			<label class="item item-input item-select">
 				<div class="input-label">Jenis Menu </div>
 				<select ng-model="post.jenis" required>
 					<option selected>Makanan</option>
 					<option>Minuman</option>
-					<option>Toping</option>
+					<option>Topping</option>
 				</select>
 			</label>
+			 <label class="item item-input item-stacked-label" style=" display: none;">
+                <span class="input-label">u apaan init</span>
+              <input ng-model="post.counter" type="number" min="0" step="any" placeholder="tau dah" required>
+				
+            </label>
+			<!--<label class="item item-input item-stacked-label">
+                <span class="input-label">Jenis Makanan</span>
+                <input ng-model="post.jenis" type="text" placeholder="Input nama makanan" required>
+            </label>-->
+			
             <div class="padding-left padding-right">
-                <button ng-click="add()" class="button button-assertive button-outline button-block" ng-disabled="form.$invalid"><i class="icon ion-ios-plus-outline" >  TAMBAH MENU MAKANAN</i></button>
+                <button ng-click="add()" class="button button-balanced1 button-block fontnormal2" ng-disabled="form.$invalid"><i class="icon ion-ios-plus-outline" > <strong> TAMBAH MENU </strong></i></button>
             </div>
         </form>
     </ion-content>

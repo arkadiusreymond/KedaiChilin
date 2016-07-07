@@ -1,16 +1,44 @@
-<ion-view view-title="Chats">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+<ion-view view-title="Chillin" class="background">
+   <ion-content on-swipe-right="goBack()" on-swipe-left="goForward()" padding="false" class="has-header" overflow-scroll="false">
+	 <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()">
+        </ion-refresher>
+        <!--<div class="row header fontnormal2" style="text-align: left;">
+          <div class="col"><strong>Menu</strong></div>
+          <div class="col" style="text-align: center;"><strong>Jenis</strong></div>
+		  <div class="col" style="text-align: center;"><strong>Harga</strong></div>
+        </div>
+        <div class="row fontnormal2" ng-repeat="data in datas" style="text-align: center;">
+          <div class="col" style="text-align: left; text-transform: uppercase;">{{data.nama}}</div>
+          <div class="col">{{data.jumlah}}</div>
+		  <div class="col">{{data.total_harga}}</div>
+		 <br><br>
+			 
+	</div>-->
+	<div class="card" style="margin-top:50px;margin-right:10px;margin-left:10px;">
+	<h2 class="tulisan" style="text-align:center; font-size:30px; margin-top:40px">Kedai Chillin</h2>
+	<p class="fontnormal2" style="text-align:center;">Jalan Akses UI, Kelapa Dua, Depok</p>
+	<p class="fontnormal2" style="text-align:center;"><strong>(Laporan Harian)</strong></p>
+	<table style="width:100%">
+  <tr class="fontnormal2" style="text-transform:uppercase; font-weight: bold;">
+    <th>No</th>
+	<th>Menu</th>
+    <th>Jumlah Order</th>
+    <th>Total Harga</th>
+  </tr>
+  <tr ng-repeat="data in datas" class="fontnormal2">
+  <td>{{data.id}}</td> 
+    <td>{{data.nama}}</td>
+    <td>{{data.jumlah}}</td>
+    <td>{{data.total_harga}}</td>
+  </tr>
+</table>
+	
+	
+		<div class="row" ng-repeat="data in datas2" style="text-align: center;">
+		<div class="col fontnormal2"><strong>Jumlah</strong></div>
+          <div class="col"></div>
+		  <div class="col fontnormal2"><strong>{{data.jumlah1}}</strong></div>
+		</div>
+		</div>
+    </ion-content>
 </ion-view>

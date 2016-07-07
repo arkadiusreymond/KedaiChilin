@@ -1,1 +1,100 @@
 /* Empty. Add your own CSS if you like */
+.gambar  {
+    background-image: url("paper.jpg");
+    background-color: #cccccc;
+}
+
+.background  {
+    background-image: url("../img/main_background.jpg");
+	position: fixed; 
+  top: 0; 
+  left: 0; 
+background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+}
+
+
+table tr {
+    counter-increment: rowNumber;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+	counter-reset: rowNumber;
+}
+th, td {
+    padding: 5px;
+}
+
+@font-face {
+    font-family: alexbrushfont;
+    src: url(../lib/ionic/fonts/alx.woff);
+}
+
+@font-face {
+    font-family: kelsonfont;
+    src: url(../lib/ionic/fonts/kelson.woff);
+}
+@font-face {
+    font-family: kelsonfontlarge;
+    src: url(../lib/ionic/fonts/kelsonnn.woff);
+}
+
+.fonttab{
+	font-family: kelsonfontlarge;
+	color:#860000;
+}
+.fontnormal{
+	font-family: kelsonfont;
+	font-size:11px;
+}
+
+.fontnormal2{
+	font-family: kelsonfont;
+	font-size:14px;
+	text-transform:uppercase;
+}
+.tulisan{
+    font-family: alexbrushfont;
+}
+p{
+    font-family: kelsonfont;
+}
+h2{
+    font-family: kelsonfont;
+}
+.button-float {
+  background: #860000 !important;
+  color: white !important;
+  z-index: 20 !important;
+  position: absolute !important;
+  bottom: 15px !important;
+  right: 15px !important;
+  border-radius: 50% !important;
+  width: 62px;
+  height:62px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transition: 0.2s linear !important;
+  transition: 0.2s linear !important;
+  -webkit-transition-property: -webkit-transform, all !important;
+  transition-property: transform, all !important;
+}
+
+.button-float:hover {
+  -webkit-transform: translate3d(0, -1px, 0) !important;
+  transform: translate3d(0, -1px, 0) !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4) !important;
+  background: ##860000 !important;
+}
+.button.button-balanced1 {
+    border-color: transparent;
+    background-color: #008000;
+    color: #fff; }
+.button.button-balanced2 {
+    border-color: transparent;
+    background-color: #284E8A;
+    color: #fff; }	
+	

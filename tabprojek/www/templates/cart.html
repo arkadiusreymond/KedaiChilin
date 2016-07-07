@@ -1,0 +1,67 @@
+<ion-modal-view class="background">
+    <div class="bar bar-header bar-balanced">
+        <h1 class="title">Konfirmasi Pembayaran</h1>
+        <button ng-click="closeCart()" class="button button-clear"><i class="icon ion-ios-close-outline"></i>
+        </button>
+    </div>
+
+     <ion-content padding="false" class="has-header" overflow-scroll="false">
+	<!-- <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()">
+        </ion-refresher>-->
+		<div class="card" style="margin-top:50px;margin-right:35px;margin-left:35px;">
+			<div class="item item-text-wrap">
+			<p style="color:#000000; font-size:11px;">Kedai Chilin</p>
+			<p style="color:#000000; font-size:11px;">Jl Akses UI, Kelapa Dua Depok</p>
+			<p style="color:#000000; font-size:12px; text-align:center" ng-repeat="data in datas4"><strong>INVOICE NO. CHL{{date | date:"ddMMyyyy"}}{{data.totalinvoice + 1}}</strong></p>
+			
+			<hr></hr>
+			<!--	<ion-list>
+            <ion-item  ng-repeat="data in datas1" type="item-text-wrap">
+             
+			   <h2> {{data.nama}} </h2>
+			   <h2> {{data.harga}} </h2>
+			   <h2> {{data.jumlah}} </h2>
+			   <h2> {{data.total_harga}} </h2>
+			    <p>{{date | date:"MM/dd/yyyy"}}</p>
+			   
+           
+			   
+            </ion-item>
+        </ion-list>-->
+		 <hr></hr>
+		 <div class="row header fontnormal" style="text-align: left;">
+          <div class="col"><strong>Menu</strong></div>
+          <div class="col"><strong>Harga</strong></div>
+		  <div class="col"><strong>Jumlah</strong></div>
+		  <div class="col"><strong>Total</strong></div>
+        </div>
+		 <hr></hr>
+        <div class="row fontnormal" ng-repeat="data in datas1" style="text-align: left;">
+          <div class="col">{{data.nama}}</div>
+          <div class="col">{{data.harga}}</div>
+		  <div class="col" style="text-align: center;">{{data.jumlah}}</div>
+		  <div class="col">{{data.total_harga}}</div>
+		 <br><br>
+	    </div>
+		<hr></hr>
+		<div class="row fontnormal" style="text-align: left;">
+		<div class="col" ng-repeat="data in datas3">{{data.totalitem}} item(s) </div>
+          <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col" ng-repeat="data in datas2">{{data.jumlah1}}</div>
+		</div>
+		  <p style="font-size:11px; margin-left:10px; margin-top:-14px;">Terimakasih atas kunjungan anda</p>
+		  <p style="font-size:11px; margin-left:10px; margin-top:-6px;">Kedai Chilin, {{date | date:"MM/dd/yyyy"}}</p>
+			</div>
+		</div>
+		
+		 <div class="padding-left padding-right">
+                <button ng-click="copyreport();emptyorderan();edit2();closeCart()" class="button button-balanced1 button-block fontnormal2" ng-disabled="form.$invalid"><i class="icon ion-cash" ><strong>  BAYAR</strong></i></button>
+            </div>
+        
+		
+		<div ng-if="datas1 === undefined" class="no-results">
+            <p style="padding: 10px">List Cart</p>
+        </div>
+  </ion-content>
+</ion-modal-view>
