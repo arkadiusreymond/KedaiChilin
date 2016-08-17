@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\workspace1\tabprojek4.00\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="521f966afb697396a39694f2ca4f6fb5848c1f74">
+        <dex dex="D:\workspace1\tabprojek4.00\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-unspecified-debug_85551dc39a63fbe452ed02749db82c050f7ea177.jar" />
+    </item>
+    <item
+        jar="D:\WORKSPACE_PI\tabprojek4.00\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="c1194768d65214a57a0f8ceb957a3391a45f2a7a">
+        <dex dex="D:\WORKSPACE_PI\tabprojek4.00\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-unspecified-debug_20371e2f2ccfd7f3cdb33c3bc95c034bdb790718.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,78 @@
+<ion-view view-title="Chillin" class="background">
+  <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon ion-ios-search" ng-click="showFilterBar()">
+        </button>
+		
+    </ion-nav-buttons>
+
+   <ion-content padding="false" class="has-header" overflow-scroll="false" style="margin-top:0px;">
+	 <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()">
+        </ion-refresher>
+		
+        <ion-list style="background-color:transparent;">
+            <ion-item  ng-repeat="data in datas" type="item-text-wrap" style="background-color:transparent;">
+               <!--<h2 style="font-size: 15px;">{{data.nama}} </h2>
+               <h2 style="text-align:right; margin-top: -20px; font-size: 15px;">{{data.harga}}</h2>  -->
+			   
+			   <p style="position:absolute;left:2px; top:33px; color:#000000;">
+					<a  ng-click="minus(data);click(data);edit1()"  class="button   button-clear   icon ion-ios-minus-outline" style="color:#860000;">  </a>
+			   </p>
+			   
+			   <p style="position:absolute;left:46px; top:45px; color:#000000;">
+					{{data.counter}}
+			   </p>
+			   
+			   
+			   <p  style="position:absolute;left:45px;top:33px; color:#000000;">
+					<a  ng-click="data.counter = data.counter + 1;click(data);edit1();"  class="button   button-clear   icon ion-ios-plus-outline" style="color:#860000;">  </a>
+			   </p>
+			   
+			  <!-- <p style="position:absolute;righty:10px;">
+					<a ng-click="insert('{{data.nama}}', '{{data.harga}}', {{data.counter}}, '{{data.harga * data.counter}}');edit2()" class="button  button-balanced button-clear   icon ion-android-cart">  </a> 
+			   </p>-->
+			   <h2 style="font-size: 20px; text-transform: uppercase; color: #860000;"><strong>{{data.nama}} </strong></h2>
+			   <h2 style="text-align:right; margin-top: -20px; font-size: 20px; color: #000000;">......................................................................................................................................................................................</h2>
+			   <h2 style="text-align:right;  margin-top: -32px; font-size: 20px; color: #860000;">{{data.harga}}</h2>
+			   <h2  style="display:none;"> {{data.id}} </h2>
+			   
+			   
+               <p style="font-size: 15px; color:#000000; text-align:right;">@{{data.counter}} porsi: {{data.harga * data.counter}}</p>
+			    
+			   <!--  <p style="font-size: 15px; color:#621012;">Total Harga <strong>IDR {{data.harga * data.counter}}</strong></p>-->
+			   <!--<p>{{date | date:"MM/dd/yyyy"}}</p>-->
+			   
+			   
+			   
+			   
+			   
+			   
+			   
+			    <form class="list" name="form" style="display:none;">
+				
+				<label class="item item-input item-stacked-label">
+                <span class="input-label">counter</span>
+                <input ng-model="put.counter" type="text" placeholder="counter" type="number" min="0" step="any" required>
+           </label>
+                <input type="hidden" ng-model="put.id">
+        </form>
+			   <!-- <input ng-model="data.nama" type="text" name="fname">-->
+			   
+            </ion-item>
+        </ion-list>
+		  
+		<!--<button class="button" ng-click="insert1()">Show Order</button>-->
+		<div ng-if="datas === undefined" class="no-results">
+            <p style="padding: 10px">Memuat Menu</p>
+        </div>
+		 
+  </ion-content>
+
+  <button class="button button-float" ng-click="emptyorderan();insert1();"><i style="font-size:23px;" class="icon ion-compose"></i> </button>
+<!--<ion-footer-bar align-title="left" class="bar-balanced">
+  <h1 class="title" style="text-align:center; margin-left:2cm;">List Cart</h1>
+  <div class="buttons" ng-click="goCart()">
+   <button class="button button-clear"><i class="icon ion-arrow-up-a"></i>
+        </button>
+  </div>
+</ion-footer-bar>-->
+</ion-view>

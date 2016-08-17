@@ -1,0 +1,31 @@
+<ion-view view-title="Chillin" class="background">
+
+  <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon ion-ios-search" ng-click="showFilterBar()">
+        </button>
+		
+    </ion-nav-buttons>
+    <ion-content padding="false" class="has-header" overflow-scroll="false">
+	 <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()">
+        </ion-refresher>
+        <ion-list style="background-color:transparent;">
+            <ion-item ng-click="click(data)" ng-repeat="data in datas" type="item-text-wrap" style="background-color:transparent;">
+                <!--<h2 style="font-size: 15px;">{{data.counter}} </h2>
+				<!--<h2 style="font-size: 15px;">{{data.harga}} </h2>
+               <h2 style="text-align:right; margin-top: -20px; font-size: 15px;">{{data.nama}}</h2>   -->
+			   
+			    <h2 style="font-size: 20px; text-transform: uppercase; color: #860000;"><strong>{{data.nama}} </strong></h2>
+			   <h2 style="text-align:right; margin-top: -20px; font-size: 20px; color: #000000;">......................................................................................................................................................................................</h2>
+			   <h2 style="text-align:right;  margin-top: -32px; font-size: 20px; color: #860000;">{{data.harga}}</h2>
+			   <h2  style="display:none;"> {{data.id}} </h2>
+               <p style="font-size: 15px; color:#000000; text-align:left;">{{data.jenis}}</p>
+            </ion-item>
+        </ion-list>
+		<div ng-if="datas === undefined" class="no-results">
+            <p style="padding: 10px">Memuat Menu</p>
+        </div>
+  </ion-content>
+
+
+ <button class="button button-float" ng-click="goAdd()"><i style="font-size:23px;" class="icon ion-plus-round"></i> </button>
+</ion-view>
